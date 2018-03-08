@@ -1,0 +1,63 @@
+version "2.5"
+
+/*
+
+class WaterHandler : StaticEventHandler 
+{
+    override void RenderOverlay(RenderEvent e) 
+	{
+        // set the player's timer up correctly (more-than-1-tick precision)
+        PlayerInfo p = players[consoleplayer];
+        Shader.SetUniform1f(p, "watershader", "timer", gametic + e.FracTic);
+        
+        if (p.mo.waterlevel >= 3) 
+		{
+            Shader.SetEnabled(p, "watershader", true);
+            Shader.SetEnabled(p, "waterzoomshader", true);
+            double effectSize = CVar.GetCVar("uw_effectsize", p).GetFloat();
+            Shader.SetUniform1f(p, "watershader", "waterFactor", effectSize);
+            Shader.SetUniform1f(p, "waterzoomshader", "zoomFactor", 1 - (effectSize * 2));
+        }
+        else 
+		{
+            Shader.SetEnabled(p, "watershader", false);
+            Shader.SetEnabled(p, "waterzoomshader", false);
+        }
+    }
+}
+*/
+
+class EffectPlayer : DoomPlayer
+{
+	double Mytimer;
+	override void Tick()
+	{
+		Super.Tick();
+		
+		if (!player || !player.mo || player.mo != self)	
+			return;
+		
+		Mytimer = (Mytimer + 1.0) % 35.0;
+		Shader.SetEnabled(Player, "DistortRipple", true);
+		Shader.SetUniform1f(Player, "DistortRipple", "NewTime", Mytimer);
+	}
+}
+
+		/*
+		if (health < 50)
+		{
+			Shader.SetEnabled(Player, "healthshader", true);
+			Shader.SetUniform1f(Player, "healthshader", "saturation", clamp(health / 50.0, 0.0, 1.0));
+			Shader.SetUniform3f(Player, "healthshader", "saturationColor", (1.5, 0.5, 0.5));
+		}
+		else if (health > 150)
+		{
+			Shader.SetEnabled(Player, "healthshader", true);
+			Shader.SetUniform1f(Player, "healthshader", "saturation", clamp((200 - health) / 50.0, 0.0, 1.0));
+			Shader.SetUniform3f(Player, "healthshader", "saturationColor", (0.5, 0.5, 1.5));
+		}
+		else
+		{
+			Shader.SetEnabled(Player, "healthshader", false);
+		}
+		*/
