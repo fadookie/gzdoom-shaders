@@ -133,8 +133,8 @@ void main()	{
 	vec4 waterflow = vec4(n, n, n, 1.0);
 	
 	float textureDistort = waterflow.r * distortionMultiplier;
-	vec2 uv = vec2(gl_FragCoord.x + textureDistort, gl_FragCoord.y + textureDistort);
-	inputPixelColor = texture(InputTexture, TexCoord);
+	vec2 uv = vec2(TexCoord.x + textureDistort, TexCoord.y + textureDistort);
+	inputPixelColor = texture(InputTexture, uv);
 	
 	inputPixelColor.rgb -= (waterflow * subtractiveDistortionMultiplier).rgb;
 	
