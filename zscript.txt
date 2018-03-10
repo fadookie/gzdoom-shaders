@@ -31,7 +31,14 @@ const DISTORTION_SHADER = "DistortRipple";
 
 class EffectPlayer : DoomPlayer
 {
-
+	CVar timescale;
+	CVar scale;
+	CVar distortion;
+	CVar subtractive;
+	CVar hsvanimation;
+	CVar tintr;
+	CVar tintg;
+	CVar tintb;
 
 	override void Tick()
 	{
@@ -40,10 +47,15 @@ class EffectPlayer : DoomPlayer
 		if (!player || !player.mo || player.mo != self)	
 			return;
 		
-		//Shader.SetEnabled(Player, DISTORTION_SHADER, true);
+		Shader.SetUniform1f(Player, DISTORTION_SHADER, "timeMultiplier", timescale.GetFloat());
+		Shader.SetUniform1f(Player, DISTORTION_SHADER, "scale", scale.GetFloat());
+		Shader.SetUniform1f(Player, DISTORTION_SHADER, "distortionMultiplier", distortion.GetFloat());
+		Shader.SetUniform1f(Player, DISTORTION_SHADER, "subtractiveDistortionMultiplier", subtractive.GetFloat());
+		
 		Shader.SetUniform1f(Player, DISTORTION_SHADER, "NewTime", level.time);
-		//Shader.SetUniform3f(Player, DISTORTION_SHADER, "tintColor", (0.0, sin(level.time), 0.0));
-		Shader.SetUniform3f(Player, DISTORTION_SHADER, "hsvShift", (level.time, cos(level.time) * 2, (sin(level.time) + 1) / 2.5));
+		Shader.SetUniform3f(Player, DISTORTION_SHADER, "tintColor", (tintr.GetFloat(), tintg.GetFloat(), tintb.GetFloat()));
+		let hsvShift = hsvanimation.GetBool() ? (level.time, cos(level.time) * 2, (sin(level.time) + 1) / 2.5) : (0, 0, 0);
+		Shader.SetUniform3f(Player, DISTORTION_SHADER, "hsvShift", hsvShift);
 	}
 	
 
@@ -51,10 +63,17 @@ class EffectPlayer : DoomPlayer
 	{
 		Console.Printf("Player init");
 		super.PostBeginPlay();
-		Shader.SetUniform1f(Player, DISTORTION_SHADER, "timeMultiplier", 0.01);
-		Shader.SetUniform1f(Player, DISTORTION_SHADER, "scale", 1);
-		Shader.SetUniform1f(Player, DISTORTION_SHADER, "distortionMultiplier", 0.05);
-		Shader.SetUniform1f(Player, DISTORTION_SHADER, "subtractiveDistortionMultiplier", 0.25);
+		
+		timescale = CVar.FindCVar("timescale");
+		scale = CVar.FindCVar("scale");
+		distortion = CVar.FindCVar("distortion");
+		subtractive = CVar.FindCVar("subtractive");
+		hsvanimation = CVar.FindCVar("hsvanimation");
+		tintr = CVar.FindCVar("tintr");
+		tintg = CVar.FindCVar("tintg");
+		tintb = CVar.FindCVar("tintb");
+		
+		//Shader.SetEnabled(Player, DISTORTION_SHADER, true);
 		/*
         ThinkerIterator MonsterFinder = ThinkerIterator.Create("Actor");
         Actor mo;
