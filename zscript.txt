@@ -35,7 +35,9 @@ class EffectPlayer : DoomPlayer
 	CVar scale;
 	CVar distortion;
 	CVar subtractive;
-	CVar hsvanimation;
+	CVar animh;
+	CVar anims;
+	CVar animv;
 	CVar tintr;
 	CVar tintg;
 	CVar tintb;
@@ -54,8 +56,12 @@ class EffectPlayer : DoomPlayer
 		
 		Shader.SetUniform1f(Player, DISTORTION_SHADER, "NewTime", level.time);
 		Shader.SetUniform3f(Player, DISTORTION_SHADER, "tintColor", (tintr.GetFloat(), tintg.GetFloat(), tintb.GetFloat()));
-		let hsvShift = hsvanimation.GetBool() ? (level.time, cos(level.time) * 2, (sin(level.time) + 1) / 2.5) : (0, 0, 0);
-		Shader.SetUniform3f(Player, DISTORTION_SHADER, "hsvShift", hsvShift);
+		
+		let hue = animh.GetBool() ? level.time : 0;
+		let sat = anims.GetBool() ? cos(level.time) * 2 : 0;
+		let val = animv.GetBool() ? (sin(level.time) + 1) / 2.5 : 0;
+		
+		Shader.SetUniform3f(Player, DISTORTION_SHADER, "hsvShift", (hue, sat, val));
 	}
 	
 
@@ -68,7 +74,9 @@ class EffectPlayer : DoomPlayer
 		scale = CVar.FindCVar("scale");
 		distortion = CVar.FindCVar("distortion");
 		subtractive = CVar.FindCVar("subtractive");
-		hsvanimation = CVar.FindCVar("hsvanimation");
+		animh = CVar.FindCVar("animh");
+		anims = CVar.FindCVar("anims");
+		animv = CVar.FindCVar("animv");
 		tintr = CVar.FindCVar("tintr");
 		tintg = CVar.FindCVar("tintg");
 		tintb = CVar.FindCVar("tintb");
