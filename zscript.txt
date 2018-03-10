@@ -53,8 +53,8 @@ class EffectPlayer : DoomPlayer
 		super.PostBeginPlay();
 		Shader.SetUniform1f(Player, DISTORTION_SHADER, "timeMultiplier", 0.01);
 		Shader.SetUniform1f(Player, DISTORTION_SHADER, "scale", 1);
-		Shader.SetUniform1f(Player, DISTORTION_SHADER, "distortionMultiplier", 0);
-		Shader.SetUniform1f(Player, DISTORTION_SHADER, "subtractiveDistortionMultiplier", 0);
+		Shader.SetUniform1f(Player, DISTORTION_SHADER, "distortionMultiplier", 0.05);
+		Shader.SetUniform1f(Player, DISTORTION_SHADER, "subtractiveDistortionMultiplier", 0.25);
 		/*
         ThinkerIterator MonsterFinder = ThinkerIterator.Create("Actor");
         Actor mo;
