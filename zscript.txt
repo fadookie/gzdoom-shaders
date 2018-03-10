@@ -4,23 +4,24 @@ const DISTORTION_SHADER = "TrippyPerlin";
 
 class EffectPlayer : DoomPlayer
 {
-	CVar timescale;
-	CVar scale;
-	CVar distortion;
-	CVar subtractive;
-	CVar animh;
-	CVar anims;
-	CVar animv;
-	CVar tintr;
-	CVar tintg;
-	CVar tintb;
-
 	override void Tick()
 	{
 		Super.Tick();
 		
 		if (!player || !player.mo || player.mo != self)	
 			return;
+			
+		let timescale = CVar.FindCVar("timescale");
+		let scale = CVar.FindCVar("scale");
+		let distortion = CVar.FindCVar("distortion");
+		let subtractive = CVar.FindCVar("subtractive");
+		let animh = CVar.FindCVar("animh");
+		let anims = CVar.FindCVar("anims");
+		let animv = CVar.FindCVar("animv");
+		let tintr = CVar.FindCVar("tintr");
+		let tintg = CVar.FindCVar("tintg");
+		let tintb = CVar.FindCVar("tintb");
+
 		
 		Shader.SetUniform1f(Player, DISTORTION_SHADER, "scale", scale.GetFloat());
 		Shader.SetUniform1f(Player, DISTORTION_SHADER, "distortionMultiplier", distortion.GetFloat());
@@ -41,17 +42,6 @@ class EffectPlayer : DoomPlayer
 	{
 		Console.Printf("Player init");
 		super.PostBeginPlay();
-		
-		timescale = CVar.FindCVar("timescale");
-		scale = CVar.FindCVar("scale");
-		distortion = CVar.FindCVar("distortion");
-		subtractive = CVar.FindCVar("subtractive");
-		animh = CVar.FindCVar("animh");
-		anims = CVar.FindCVar("anims");
-		animv = CVar.FindCVar("animv");
-		tintr = CVar.FindCVar("tintr");
-		tintg = CVar.FindCVar("tintg");
-		tintb = CVar.FindCVar("tintb");
 		
 		//Shader.SetEnabled(Player, DISTORTION_SHADER, true);
 		/*
