@@ -1,0 +1,5 @@
+vec4 Process(vec4 color)
+{
+    vec4 texel = getTexel(vTexCoord.st);
+    return vec4(1.0, 0.0, 0.0, texel.a);
+}

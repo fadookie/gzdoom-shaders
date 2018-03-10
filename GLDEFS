@@ -8,6 +8,13 @@ hardwareshader postprocess scene
 }
 */
 
+hardwareshader POSSA5
+{
+	Name "HeatmapSprite"
+	Shader "HeatmapSprite.txt" 330
+}
+
+
 hardwareshader postprocess scene
 {
 	Name "DistortRipple"

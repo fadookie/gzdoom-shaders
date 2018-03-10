@@ -29,6 +29,7 @@ class WaterHandler : StaticEventHandler
 
 class EffectPlayer : DoomPlayer
 {
+
 	double Mytimer;
 	override void Tick()
 	{
@@ -40,6 +41,21 @@ class EffectPlayer : DoomPlayer
 		Mytimer = (Mytimer + 1.0) % 35.0;
 		Shader.SetEnabled(Player, "DistortRipple", true);
 		Shader.SetUniform1f(Player, "DistortRipple", "NewTime", Mytimer);
+	}
+	
+	override void PostBeginPlay() {
+		Console.Printf("Player init");
+		super.PostBeginPlay();
+        ThinkerIterator MonsterFinder = ThinkerIterator.Create("Actor");
+        Actor mo;
+        while ( mo = Actor(MonsterFinder.Next()) )
+        {
+            if ( mo.bIsMonster )
+            {
+                //mo.RenderStyle = "Fuzzy";
+				Console.Printf("Got monster" .. mo);
+            }
+		}
 	}
 }
 
@@ -61,3 +77,4 @@ class EffectPlayer : DoomPlayer
 			Shader.SetEnabled(Player, "healthshader", false);
 		}
 		*/
+		
