@@ -138,9 +138,10 @@ void main()	{
 	
 	if(applySubtractiveDistortion != 0) {
 		inputPixelColor -= waterflow / 2;
-        inputPixelColor.g += 0.3;
 		inputPixelColor.a = 1.0;
 	}
+	
+	inputPixelColor.rgb += tintColor;
 	
 	//FragColor = vec4(sin(time), 1, 1, 1);
 	FragColor = inputPixelColor;
