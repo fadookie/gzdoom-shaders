@@ -29,8 +29,7 @@ class WaterHandler : StaticEventHandler
 
 class EffectPlayer : DoomPlayer
 {
-/*
-	double Mytimer;
+
 	override void Tick()
 	{
 		Super.Tick();
@@ -38,11 +37,11 @@ class EffectPlayer : DoomPlayer
 		if (!player || !player.mo || player.mo != self)	
 			return;
 		
-		Mytimer = (Mytimer + 1.0) % 35.0;
-		Shader.SetEnabled(Player, "DistortRipple", true);
-		Shader.SetUniform1f(Player, "DistortRipple", "NewTime", Mytimer);
+		//Shader.SetEnabled(Player, "DistortRipple", true);
+		Shader.SetUniform1f(Player, "DistortRipple", "NewTime", level.time);
 	}
-	*/
+	
+/*
 	override void PostBeginPlay() {
 		Console.Printf("Player init");
 		super.PostBeginPlay();
@@ -57,6 +56,7 @@ class EffectPlayer : DoomPlayer
             }
 		}
 	}
+	*/
 }
 
 		/*

@@ -23,7 +23,7 @@ vec4 ProcessTexel()
 {
     vec4 texel = getTexel(vTexCoord.st);
     vec3 colorHSV = rgb2hsv(texel.rgb);
-    colorHSV.x += timer;
+    //colorHSV.x += timer;
     return vec4(hsv2rgb(colorHSV), texel.a);
 }
 

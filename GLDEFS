@@ -21,7 +21,5 @@ hardwareshader postprocess scene
 	Shader "DistortRipple.txt" 330
 	
 	Uniform float NewTime
-	Uniform vec2 ZoomCenter
-	Uniform float ZoomSize
-	
+	Enabled
 }
