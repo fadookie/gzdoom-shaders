@@ -1,4 +1,4 @@
-noarchive user float timescale = 0.01;
+noarchive user float timescale = 0.005;
 noarchive user float scale = 1;
 noarchive user float distortion = 0.05;
 noarchive user float subtractive = 0.25;

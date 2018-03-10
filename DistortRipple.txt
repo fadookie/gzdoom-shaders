@@ -148,7 +148,7 @@ vec3 shiftHsv(vec3 c, vec3 shift) {
 void main()	{
 	vec4 inputPixelColor;
 
-	float time = NewTime * timeMultiplier;
+	float time = NewTime;
 	
 	vec3 noiseInput = vec3(TexCoord.x * scale, TexCoord.y * scale, time);
 	float n = surface(noiseInput);

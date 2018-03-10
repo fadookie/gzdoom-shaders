@@ -9,8 +9,7 @@ hardwareshader postprocess scene
 	Name "DistortRipple"
 	Shader "DistortRipple.txt" 330
 	
-	Uniform float NewTime	
-	Uniform float timeMultiplier
+	Uniform float NewTime
 	Uniform float scale
 	Uniform float distortionMultiplier
 	Uniform float subtractiveDistortionMultiplier

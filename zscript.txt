@@ -49,12 +49,11 @@ class EffectPlayer : DoomPlayer
 		if (!player || !player.mo || player.mo != self)	
 			return;
 		
-		Shader.SetUniform1f(Player, DISTORTION_SHADER, "timeMultiplier", timescale.GetFloat());
 		Shader.SetUniform1f(Player, DISTORTION_SHADER, "scale", scale.GetFloat());
 		Shader.SetUniform1f(Player, DISTORTION_SHADER, "distortionMultiplier", distortion.GetFloat());
 		Shader.SetUniform1f(Player, DISTORTION_SHADER, "subtractiveDistortionMultiplier", subtractive.GetFloat());
 		
-		Shader.SetUniform1f(Player, DISTORTION_SHADER, "NewTime", level.time);
+		Shader.SetUniform1f(Player, DISTORTION_SHADER, "NewTime", level.time * timescale.GetFloat());
 		Shader.SetUniform3f(Player, DISTORTION_SHADER, "tintColor", (tintr.GetFloat(), tintg.GetFloat(), tintb.GetFloat()));
 		
 		let hue = animh.GetBool() ? level.time : 0;
