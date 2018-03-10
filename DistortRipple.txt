@@ -120,12 +120,7 @@ float surface( vec3 coord ) {
 
 }
 
-//uniform float timer;
-
-const float timeMultiplier = 0.01;
-const float scale = 1;
-const float distortionMultiplier = 1;
-const bool applySubtractiveDistortion = true;
+//uniform float timer; // Apparently this only works for sprite shaders, not postprocess
 
 void main()	{
 	vec4 inputPixelColor;
@@ -141,7 +136,7 @@ void main()	{
 	vec2 uv = vec2(gl_FragCoord.x + textureDistort, gl_FragCoord.y + textureDistort);
 	inputPixelColor = texture(InputTexture, TexCoord);
 	
-	if(applySubtractiveDistortion) {
+	if(applySubtractiveDistortion != 0) {
 		inputPixelColor -= waterflow / 2;
         inputPixelColor.g += 0.3;
 		inputPixelColor.a = 1.0;

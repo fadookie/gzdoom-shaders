@@ -27,8 +27,11 @@ class WaterHandler : StaticEventHandler
 }
 */
 
+const DISTORTION_SHADER = "DistortRipple";
+
 class EffectPlayer : DoomPlayer
 {
+
 
 	override void Tick()
 	{
@@ -37,14 +40,20 @@ class EffectPlayer : DoomPlayer
 		if (!player || !player.mo || player.mo != self)	
 			return;
 		
-		//Shader.SetEnabled(Player, "DistortRipple", true);
-		Shader.SetUniform1f(Player, "DistortRipple", "NewTime", level.time);
+		//Shader.SetEnabled(Player, DISTORTION_SHADER, true);
+		Shader.SetUniform1f(Player, DISTORTION_SHADER, "NewTime", level.time);
 	}
 	
-/*
-	override void PostBeginPlay() {
+
+	override void PostBeginPlay()
+	{
 		Console.Printf("Player init");
 		super.PostBeginPlay();
+		Shader.SetUniform1f(Player, DISTORTION_SHADER, "timeMultiplier", 0.01);
+		Shader.SetUniform1f(Player, DISTORTION_SHADER, "scale", 1);
+		Shader.SetUniform1f(Player, DISTORTION_SHADER, "distortionMultiplier", 4);
+		Shader.SetUniform1i(Player, DISTORTION_SHADER, "applySubtractiveDistortion", true);
+		/*
         ThinkerIterator MonsterFinder = ThinkerIterator.Create("Actor");
         Actor mo;
         while ( mo = Actor(MonsterFinder.Next()) )
@@ -55,8 +64,8 @@ class EffectPlayer : DoomPlayer
 				Console.Printf("Got monster" .. mo);
             }
 		}
+		*/
 	}
-	*/
 }
 
 		/*
