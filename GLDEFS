@@ -25,6 +25,7 @@ hardwareshader postprocess scene
 	Uniform float scale
 	Uniform float distortionMultiplier
 	Uniform float subtractiveDistortionMultiplier
+	Uniform vec3 hsvShift
 	Uniform vec3 tintColor
 	Enabled
 }
