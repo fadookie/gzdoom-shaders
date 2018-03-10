@@ -24,7 +24,7 @@ hardwareshader postprocess scene
 	Uniform float timeMultiplier
 	Uniform float scale
 	Uniform float distortionMultiplier
-	Uniform int applySubtractiveDistortion
+	Uniform float subtractiveDistortionMultiplier
 	Uniform vec3 tintColor
 	Enabled
 }

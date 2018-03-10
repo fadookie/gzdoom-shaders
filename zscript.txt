@@ -52,7 +52,7 @@ class EffectPlayer : DoomPlayer
 		Shader.SetUniform1f(Player, DISTORTION_SHADER, "timeMultiplier", 0.01);
 		Shader.SetUniform1f(Player, DISTORTION_SHADER, "scale", 1);
 		Shader.SetUniform1f(Player, DISTORTION_SHADER, "distortionMultiplier", 4);
-		Shader.SetUniform1i(Player, DISTORTION_SHADER, "applySubtractiveDistortion", true);
+		Shader.SetUniform1f(Player, DISTORTION_SHADER, "subtractiveDistortionMultiplier", 0.5);
 		Shader.SetUniform3f(Player, DISTORTION_SHADER, "tintColor", (0.0, 0.3, 0.0));
 		/*
         ThinkerIterator MonsterFinder = ThinkerIterator.Create("Actor");

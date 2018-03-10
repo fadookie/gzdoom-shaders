@@ -136,10 +136,7 @@ void main()	{
 	vec2 uv = vec2(gl_FragCoord.x + textureDistort, gl_FragCoord.y + textureDistort);
 	inputPixelColor = texture(InputTexture, TexCoord);
 	
-	if(applySubtractiveDistortion != 0) {
-		inputPixelColor -= waterflow / 2;
-		inputPixelColor.a = 1.0;
-	}
+	inputPixelColor.rgb -= (waterflow * subtractiveDistortionMultiplier).rgb;
 	
 	inputPixelColor.rgb += tintColor;
 	
