@@ -96,23 +96,3 @@ class EffectPlayer : DoomPlayer
 		*/
 	}
 }
-
-		/*
-		if (health < 50)
-		{
-			Shader.SetEnabled(Player, "healthshader", true);
-			Shader.SetUniform1f(Player, "healthshader", "saturation", clamp(health / 50.0, 0.0, 1.0));
-			Shader.SetUniform3f(Player, "healthshader", "saturationColor", (1.5, 0.5, 0.5));
-		}
-		else if (health > 150)
-		{
-			Shader.SetEnabled(Player, "healthshader", true);
-			Shader.SetUniform1f(Player, "healthshader", "saturation", clamp((200 - health) / 50.0, 0.0, 1.0));
-			Shader.SetUniform3f(Player, "healthshader", "saturationColor", (0.5, 0.5, 1.5));
-		}
-		else
-		{
-			Shader.SetEnabled(Player, "healthshader", false);
-		}
-		*/
-		

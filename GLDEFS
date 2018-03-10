@@ -1,19 +1,8 @@
-/*
-hardwareshader postprocess scene
-{
-	Name "healthshader"
-	Shader "healthshader.glsl" 330
-	Uniform float saturation
-	Uniform vec3 saturationColor
-}
-*/
-
 hardwareshader POSSA5
 {
 	Name "HeatmapSprite"
 	Shader "HeatmapSprite.txt" 330
 }
-
 
 hardwareshader postprocess scene
 {
