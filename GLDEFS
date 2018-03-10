@@ -6,8 +6,8 @@ hardwareshader POSSA5
 
 hardwareshader postprocess scene
 {
-	Name "DistortRipple"
-	Shader "DistortRipple.txt" 330
+	Name "TrippyPerlin"
+	Shader "TrippyPerlin.txt" 330
 	
 	Uniform float NewTime
 	Uniform float scale
