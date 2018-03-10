@@ -43,7 +43,7 @@ class EffectPlayer : DoomPlayer
 		//Shader.SetEnabled(Player, DISTORTION_SHADER, true);
 		Shader.SetUniform1f(Player, DISTORTION_SHADER, "NewTime", level.time);
 		//Shader.SetUniform3f(Player, DISTORTION_SHADER, "tintColor", (0.0, sin(level.time), 0.0));
-		Shader.SetUniform3f(Player, DISTORTION_SHADER, "hsvShift", (0, cos(level.time) * 2, (sin(level.time) + 0.75) / 2.5));
+		Shader.SetUniform3f(Player, DISTORTION_SHADER, "hsvShift", (level.time, cos(level.time) * 2, (sin(level.time) + 1) / 2.5));
 	}
 	
 
