@@ -30,7 +30,7 @@ class EffectPlayer : DoomPlayer
 		Shader.SetUniform1f(Player, DISTORTION_SHADER, "NewTime", level.time * timescale.GetFloat());
 		Shader.SetUniform3f(Player, DISTORTION_SHADER, "tintColor", (tintr.GetFloat(), tintg.GetFloat(), tintb.GetFloat()));
 		
-		let hue = animh.GetBool() ? level.time : 0;
+		let hue = animh.GetBool() ? sin(level.time) : 0;
 		let sat = anims.GetBool() ? cos(level.time) * 2 : 0;
 		let val = animv.GetBool() ? (sin(level.time) + 1) / 2.5 : 0;
 		
