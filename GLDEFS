@@ -1,7 +1,26 @@
-hardwareshader POSSA5
+hardwareshader FWATER1
 {
-	Name "HeatmapSprite"
-	Shader "HeatmapSprite.txt" 330
+	Name "PerlinTexture"
+	Shader "PerlinTexture.txt" 330
+	Speed 0.5
+}
+hardwareshader FWATER2
+{
+	Name "PerlinTexture"
+	Shader "PerlinTexture.txt" 330
+	Speed 0.5
+}
+hardwareshader FWATER3
+{
+	Name "PerlinTexture"
+	Shader "PerlinTexture.txt" 330
+	Speed 0.5
+}
+hardwareshader FWATER4
+{
+	Name "PerlinTexture"
+	Shader "PerlinTexture.txt" 330
+	Speed 0.5
 }
 
 hardwareshader postprocess scene
@@ -15,5 +34,5 @@ hardwareshader postprocess scene
 	Uniform float subtractiveDistortionMultiplier
 	Uniform vec3 hsvShift
 	Uniform vec3 tintColor
-	Enabled
+	//Enabled
 }
